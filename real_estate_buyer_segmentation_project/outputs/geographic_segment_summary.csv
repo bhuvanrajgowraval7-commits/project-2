@@ -1,0 +1,123 @@
+country,region,segment,buyers
+Australia,New South Wales,Premium Home Buyers,4
+Australia,New South Wales,Value-Oriented Buyers,9
+Australia,Queensland,Value-Oriented Buyers,4
+Australia,South Australia,Premium Home Buyers,2
+Australia,South Australia,Value-Oriented Buyers,1
+Australia,Victoria,Premium Home Buyers,7
+Australia,Victoria,Value-Oriented Buyers,6
+Australia,Western Australia,Premium Home Buyers,1
+Australia,Western Australia,Value-Oriented Buyers,5
+Belgium,Brussels,Frequent / Portfolio Buyers,1
+Belgium,Brussels,Premium Home Buyers,5
+Belgium,Brussels,Value-Oriented Buyers,6
+Belgium,Flanders,Premium Home Buyers,8
+Belgium,Flanders,Value-Oriented Buyers,8
+Belgium,Wallonia,Premium Home Buyers,5
+Belgium,Wallonia,Value-Oriented Buyers,10
+Canada,Alberta,Premium Home Buyers,10
+Canada,Alberta,Value-Oriented Buyers,17
+Canada,British Columbia,Premium Home Buyers,10
+Canada,British Columbia,Value-Oriented Buyers,10
+Canada,Manitoba,Premium Home Buyers,7
+Canada,Manitoba,Value-Oriented Buyers,8
+Canada,Ontario,Premium Home Buyers,3
+Canada,Ontario,Value-Oriented Buyers,6
+Canada,Quebec,Frequent / Portfolio Buyers,1
+Canada,Quebec,Premium Home Buyers,6
+Canada,Quebec,Value-Oriented Buyers,7
+Denmark,Capital Region,Premium Home Buyers,5
+Denmark,Central Denmark,Value-Oriented Buyers,1
+Denmark,North Denmark,Premium Home Buyers,2
+Denmark,North Denmark,Value-Oriented Buyers,2
+Denmark,Southern Denmark,Premium Home Buyers,2
+Denmark,Southern Denmark,Value-Oriented Buyers,1
+Denmark,Zealand,Premium Home Buyers,1
+Denmark,Zealand,Value-Oriented Buyers,1
+France,Brittany,Premium Home Buyers,9
+France,Brittany,Value-Oriented Buyers,7
+France,Ile-de-France,Frequent / Portfolio Buyers,1
+France,Ile-de-France,Premium Home Buyers,6
+France,Ile-de-France,Value-Oriented Buyers,8
+France,Normandy,Premium Home Buyers,1
+France,Normandy,Value-Oriented Buyers,3
+France,Occitanie,Premium Home Buyers,3
+France,Occitanie,Value-Oriented Buyers,5
+France,Provence,Premium Home Buyers,1
+France,Provence,Value-Oriented Buyers,9
+Germany,Bavaria,Premium Home Buyers,7
+Germany,Bavaria,Value-Oriented Buyers,5
+Germany,Berlin,Premium Home Buyers,4
+Germany,Berlin,Value-Oriented Buyers,7
+Germany,Hamburg,Premium Home Buyers,4
+Germany,Hamburg,Value-Oriented Buyers,12
+Germany,Hesse,Premium Home Buyers,3
+Germany,Hesse,Value-Oriented Buyers,4
+Germany,North Rhine-Westphalia,Frequent / Portfolio Buyers,1
+Germany,North Rhine-Westphalia,Premium Home Buyers,4
+Germany,North Rhine-Westphalia,Value-Oriented Buyers,5
+Mexico,Baja California,Premium Home Buyers,3
+Mexico,Baja California,Value-Oriented Buyers,4
+Mexico,Jalisco,Premium Home Buyers,2
+Mexico,Jalisco,Value-Oriented Buyers,7
+Mexico,Mexico City,Premium Home Buyers,3
+Mexico,Mexico City,Value-Oriented Buyers,4
+Mexico,Nuevo Leon,Premium Home Buyers,5
+Mexico,Nuevo Leon,Value-Oriented Buyers,5
+Mexico,Puebla,Premium Home Buyers,1
+Mexico,Puebla,Value-Oriented Buyers,6
+Russia,Krasnodar Krai,Premium Home Buyers,4
+Russia,Krasnodar Krai,Value-Oriented Buyers,6
+Russia,Moscow Oblast,Premium Home Buyers,1
+Russia,Moscow Oblast,Value-Oriented Buyers,2
+Russia,Novosibirsk,Premium Home Buyers,1
+Russia,Novosibirsk,Value-Oriented Buyers,4
+Russia,Saint Petersburg,Premium Home Buyers,5
+Russia,Saint Petersburg,Value-Oriented Buyers,5
+Russia,Tatarstan,Premium Home Buyers,5
+Russia,Tatarstan,Value-Oriented Buyers,3
+UK,England,Frequent / Portfolio Buyers,1
+UK,England,Premium Home Buyers,11
+UK,England,Value-Oriented Buyers,17
+UK,Northern Ireland,Premium Home Buyers,12
+UK,Northern Ireland,Value-Oriented Buyers,12
+UK,Scotland,Frequent / Portfolio Buyers,2
+UK,Scotland,Premium Home Buyers,10
+UK,Scotland,Value-Oriented Buyers,13
+UK,Wales,Premium Home Buyers,8
+UK,Wales,Value-Oriented Buyers,9
+USA,Arizona,Frequent / Portfolio Buyers,1
+USA,Arizona,Premium Home Buyers,48
+USA,Arizona,Value-Oriented Buyers,59
+USA,California,Frequent / Portfolio Buyers,24
+USA,California,Premium Home Buyers,284
+USA,California,Value-Oriented Buyers,325
+USA,Colorado,Premium Home Buyers,43
+USA,Colorado,Value-Oriented Buyers,75
+USA,Florida,Frequent / Portfolio Buyers,3
+USA,Florida,Premium Home Buyers,23
+USA,Florida,Value-Oriented Buyers,24
+USA,Georgia,Premium Home Buyers,11
+USA,Georgia,Value-Oriented Buyers,23
+USA,Kansas,Frequent / Portfolio Buyers,1
+USA,Nevada,Frequent / Portfolio Buyers,6
+USA,Nevada,Premium Home Buyers,66
+USA,Nevada,Value-Oriented Buyers,71
+USA,New York,Premium Home Buyers,26
+USA,New York,Value-Oriented Buyers,23
+USA,Ohio,Premium Home Buyers,10
+USA,Ohio,Value-Oriented Buyers,14
+USA,Oregon,Frequent / Portfolio Buyers,3
+USA,Oregon,Premium Home Buyers,43
+USA,Oregon,Value-Oriented Buyers,50
+USA,Texas,Frequent / Portfolio Buyers,1
+USA,Texas,Premium Home Buyers,23
+USA,Texas,Value-Oriented Buyers,32
+USA,Utah,Premium Home Buyers,39
+USA,Utah,Value-Oriented Buyers,48
+USA,Virginia,Frequent / Portfolio Buyers,4
+USA,Virginia,Premium Home Buyers,26
+USA,Virginia,Value-Oriented Buyers,35
+USA,Washington,Premium Home Buyers,36
+USA,Washington,Value-Oriented Buyers,37
+USA,Wyoming,Premium Home Buyers,1

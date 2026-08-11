@@ -1,0 +1,13 @@
+dataset,field,description,basis
+clients,client_id,Unique client identifier,PRD
+clients,client_type,Individual / Company,Source dataset; PRD uses Individual / Corporate terminology
+clients,date_of_birth,Buyer date of birth; used to derive age,PRD
+clients,acquisition_purpose,Home / Investment,Source dataset
+clients,loan_applied,Financing indicator,PRD
+clients,referral_channel,Customer acquisition source,PRD
+properties,listing_id,Unique listing identifier,Source dataset
+properties,transaction_date,Property transaction/listing date,Source dataset
+properties,floor_area_sqft,Floor area in square feet,Source dataset
+properties,sale_price,"Sale price string, cleaned to numeric USD-like value",Source dataset
+properties,listing_status,Sold / Available,Source dataset
+properties,client_ref,Client reference for sold/client-linked records,Source dataset

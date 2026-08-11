@@ -1,0 +1,9 @@
+{
+  "best_k": 3,
+  "best_silhouette": 0.19814387427983945,
+  "n_clients": 2000,
+  "n_properties": 10000,
+  "sold_properties": 7305,
+  "available_properties": 2695,
+  "unmatched_available_refs": 2695
+}
