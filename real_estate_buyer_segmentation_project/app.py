@@ -37,8 +37,28 @@ st.caption("Machine-learning buyer intelligence dashboard based on the supplied 
 
 with st.sidebar:
     st.header("Filters")
-    country=st.multiselect("Country",sorted(c.country.dropna().unique()),default=[])
-    region=st.multiselect("Region",sorted(c.region.dropna().unique()),default=[])
+
+    # Country -> Region is a dependent filter.  When one or more countries
+    # are selected, only regions belonging to those countries are offered.
+    # Any previously selected regions that are no longer valid are cleared.
+    country_options = sorted(c["country"].dropna().unique())
+    country = st.multiselect("Country", country_options, key="filter_country")
+
+    if country:
+        region_options = sorted(
+            c.loc[c["country"].isin(country), "region"].dropna().unique()
+        )
+    else:
+        region_options = sorted(c["region"].dropna().unique())
+
+    if "filter_region" in st.session_state:
+        st.session_state["filter_region"] = [
+            r for r in st.session_state["filter_region"] if r in region_options
+        ]
+
+    region = st.multiselect(
+        "Region", region_options, key="filter_region"
+    )
     purpose=st.multiselect("Acquisition purpose",sorted(c.acquisition_purpose.dropna().unique()),default=[])
     ctype=st.multiselect("Client type",sorted(c.client_type.dropna().unique()),default=[])
     segment=st.multiselect("Buyer segment",sorted(c.segment.dropna().unique()),default=[])
@@ -52,8 +72,8 @@ if segment: f=f[f.segment.isin(segment)]
 
 m1,m2,m3,m4=st.columns(4)
 m1.metric("Buyers",f.client_id.nunique())
-m2.metric("Total investment", f"${f["total_investment"].sum():,.0f}")
-m3.metric("Avg purchase price", f"${f["avg_purchase_price"].mean():,.0f}")
+m2.metric("Total investment",f["total_investment"].sum())
+m3.metric("Avg purchase price",f["avg_purchase_price"].mean())
 m4.metric("Avg satisfaction",round(f["satisfaction_score"].mean(),2))
 
 st.subheader("Buyer Segmentation Overview")
@@ -75,8 +95,10 @@ with b:
 
 st.subheader("Geographic Buyer Analysis")
 
-g = f.groupby(["country", "region", "segment"]).size().reset_index(name="buyers")
+g=f.groupby(["country","region","segment"]).size().reset_index(name="buyers")
 
+# Representative region coordinates for an interactive visualization.
+# These are regional visualization points, not property addresses.
 REGION_COORDS = {
     "California":(36.7783,-119.4179),"Nevada":(38.8026,-116.4194),
     "Colorado":(39.5501,-105.7821),"Arizona":(34.0489,-111.0937),
@@ -109,36 +131,28 @@ REGION_COORDS = {
     "Western Australia":(-25.0423,121.7310)
 }
 
-geo_c1, geo_c2 = st.columns(2)
-with geo_c1:
-    selected_country = st.selectbox("Country", ["All Countries"] + sorted(f["country"].dropna().unique()), key="geo_country")
-geo_filtered = f if selected_country == "All Countries" else f[f.country == selected_country]
-with geo_c2:
-    selected_region = st.selectbox("Region", ["All Regions"] + sorted(geo_filtered["region"].dropna().unique()), key="geo_region")
-if selected_region != "All Regions":
-    geo_filtered = geo_filtered[geo_filtered.region == selected_region]
+# Dominant segment per region, plus total regional buyer count.
+idx=g.groupby(["country","region"])["buyers"].idxmax()
+gm=g.loc[idx].copy()
+tot=g.groupby(["country","region"])["buyers"].sum().reset_index(name="total_buyers")
+gm=gm.merge(tot,on=["country","region"],how="left")
+gm["latitude"]=gm["region"].map(lambda x: REGION_COORDS.get(x,(np.nan,np.nan))[0])
+gm["longitude"]=gm["region"].map(lambda x: REGION_COORDS.get(x,(np.nan,np.nan))[1])
+gm=gm.dropna(subset=["latitude","longitude"])
 
-g_view = geo_filtered.groupby(["country", "region", "segment"]).size().reset_index(name="buyers")
-gm=g_view.copy(); gm["latitude"]=gm.region.map(lambda x: REGION_COORDS.get(x,(np.nan,np.nan))[0]); gm["longitude"]=gm.region.map(lambda x: REGION_COORDS.get(x,(np.nan,np.nan))[1]); gm=gm.dropna(subset=["latitude","longitude"])
 if not gm.empty:
-    fig=px.scatter_geo(gm,lat="latitude",lon="longitude",size="buyers",color="segment",hover_name="region",hover_data={"country":True,"segment":True,"buyers":True,"latitude":False,"longitude":False},scope="world",projection="natural earth",title="Buyer Segments by Region",size_max=28)
+    fig=px.scatter_geo(
+        gm,lat="latitude",lon="longitude",size="total_buyers",color="segment",
+        hover_name="region",
+        hover_data={"country":True,"total_buyers":True,"segment":True,
+                    "buyers":True,"latitude":False,"longitude":False},
+        scope="world",projection="natural earth",
+        title="Buyer Segments by Geographic Region",size_max=35
+    )
     fig.update_geos(showland=True,showcountries=True)
     st.plotly_chart(fig,use_container_width=True)
-else:
-    st.info("No mapped regions are available for the current selection.")
 
-if not g_view.empty:
-    cols=["Value-Oriented Buyers","Premium Home Buyers","Frequent / Portfolio Buyers"]
-    regional=g_view.pivot_table(index=["country","region"],columns="segment",values="buyers",aggfunc="sum",fill_value=0).reset_index()
-    for col in cols:
-        if col not in regional.columns: regional[col]=0
-    regional["Total Buyers"]=regional[cols].sum(axis=1)
-    st.markdown("**Regional Buyer Segment Distribution**")
-    st.dataframe(regional[["country","region"]+cols+["Total Buyers"]].sort_values("Total Buyers",ascending=False),use_container_width=True,hide_index=True)
-    totals=g_view.groupby("segment",as_index=False)["buyers"].sum().sort_values("buyers",ascending=False)
-    st.markdown("**Selected Geographic Scope — Segment Totals**")
-    st.bar_chart(totals.set_index("segment"))
-
+st.dataframe(g.sort_values("buyers",ascending=False).head(50),use_container_width=True)
 
 st.subheader("Segment Insights")
 for _,r in prof.iterrows():
